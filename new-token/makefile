@@ -5,3 +5,6 @@ deploy-anvil:;
 
 deploy-sepolia:;
 	@forge script script/NewToken.s.sol --rpc-url ${SEPOLIA_RPC_URL} --broadcast --account <cast-wallet-name> --verify --etherscan-api-key ${API_KEY}
+
+deploy-bnb-testnet:;
+	@forge script script/NewToken.s.sol --rpc-url ${BNB_TESTNET} --broadcast --account <cast-wallet-name> --verify --etherscan-api-key ${API_KEY}
