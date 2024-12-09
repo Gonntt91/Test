@@ -1,66 +1,43 @@
-## Foundry
+anvil -> khởi tạo local chain
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+forge compile
 
-Foundry consists of:
+### deploy contract với create hoặc script:
+forge create <contract name> --rpc-url <endpoint> --interactive
+forge create <contract name> --rpc-url <endpoint> --private-key <private key>
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+forge script <path to file script> --rpc-url <endpoint> --broadcast --private-key <key>
 
-## Documentation
+### insert wallet
+cast wallet import <wallet name> --interactive                                                  
+Enter private key:
+Enter password:
 
-https://book.getfoundry.sh/
+forge script <path to file script> --rpc-url <endpoint> --broadcast --account <wallet name> --sender <account address>
 
-## Usage
+* nếu không có --broadcast thì chỉ giả lập thử đoạn script có chạy thành công hay không, thêm --broadcast để gửi lên blockchain
 
-### Build
+cast wallet list
 
-```shell
-$ forge build
-```
+### interact write function
+cast send <contract address> "<function name>(type arg1, type arg2...)" arg1 agr2 --rpc-url <endpoint> --account bicwallet
 
-### Test
+### interact read function
+cast call <contract address> "function name(type arg1)" arg1 --rpc-url <endpoint>
 
-```shell
-$ forge test
-```
+source .env
+cast call <contract address> "function name(type arg1)" arg1 --rpc-url ${SEPOLIA_RPC_URL}
 
-### Format
+### verify contract
+forge v <contract address> <path to contract>:<contract name> --rpc-url ${SEPOLIA_RPC_URL} --etherscan-api-key ${API_KEY}
 
-```shell
-$ forge fmt
-```
+### deploy kèm verify
+forge script <path to file script> --rpc-url <endpoint> --broadcast --account bicwallet --verify --etherscan-api-key ${API_KEY}
 
-### Gas Snapshots
+### Install Dependencies
+forge install <GITHUB_LINK>@<VERSION> --no-commit
 
-```shell
-$ forge snapshot
-```
+forge test -vv : lệnh test kèm log
+forge test -vvvv : lệnh test kèm log step by step
+forge test --match-test <function test> -vv: lệnh chỉ test function chỉ định kèm log
 
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
