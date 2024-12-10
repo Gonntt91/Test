@@ -12,3 +12,4 @@ docs/
 
 # Dotenv file
 .env
+/new-token/lib/openzeppelin-contracts
