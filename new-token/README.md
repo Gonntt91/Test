@@ -2,17 +2,13 @@ anvil -> khởi tạo local chain
 
 ### Install Dependencies
 
-GITHUB_LINK = https://github.com/OpenZeppelin/openzeppelin-contracts
+> GITHUB_LINK = https://github.com/OpenZeppelin/openzeppelin-contracts
 
-```
+> forge install <GITHUB_LINK>@<VERSION> --no-commit
 
+> forge compile
 
-forge install <GITHUB_LINK>@<VERSION> --no-commit
-
-
-forge compile
-```
-
+`#0969DA`
 
 
 ### deploy contract với create hoặc script:
